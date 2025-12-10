@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket CC 50amucha - Lo mismo pero màs barato </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+
+    <div class="bg-camucha-accent text-white text-center py-2 text-sm font-semibold">
+        ¡OFERTA DEL DÍA! | ¡Entrega GRATIS en pedidos mayores a S/ 50.00!
+    </div>
+
+    <header class="header-sticky bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            
+            <div class="flex items-center space-x-2">
+                <img src="./logo.camucha.png" alt="Logo Minimarket Camucha" class="h-14 w-auto object-contain">
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="hidden sm:block w-full md:w-80">
+                    <div class="relative">
+                        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Buscar productos..." class="search-bar-style">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500"></i>
+                    </div>
+                </div>
+
+                <button id="openCartBtn" class="relative p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition duration-150 shadow-sm" aria-label="Abrir Carrito">
+                    <i data-lucide="shopping-cart" class="w-6 h-6 text-camucha-accent"></i>
+                    <span id="cartCount" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white border-t border-gray-100 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-center space-x-4 sm:space-x-8 text-base font-medium">
+                <a href="#inicio" class="text-gray-700 hover:text-camucha-accent transition duration-150">Inicio</a>
+                <a href="#catalogo" class="text-gray-700 hover:text-camucha-accent transition duration-150">Catálogo</a>
+                <a href="#ofertas" class="text-gray-700 hover:text-camucha-accent transition duration-150">Ofertas</a>
+                <a href="#info" class="text-gray-700 hover:text-camucha-accent transition duration-150">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio" class="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+        
+        <section class="bg-white p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 border-l-8 border-camucha-accent">
+            <div class="md:w-3/4">
+                <p class="text-sm font-semibold text-camucha-accent mb-2">PROMOCIÓN EXCLUSIVA</p>
+                <h2 class="text-4xl font-bold mb-3 text-gray-900">¡Recibe 10% de Descuento en Tu Primera Compra!</h2>
+                <p class="text-lg text-gray-600 mb-6">Regístrate ahora y usa el cupón **CAMUCHA10**. ¡Calidad y frescura garantizadas!</p>
+                <button onclick="document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });" class="btn-primary shadow-xl">
+                    Comprar ahora <i data-lucide="arrow-right" class="inline w-5 h-5 ml-1"></i>
+                </button>
+            </div>
+            <div class="md:w-1/4 flex justify-center">
+                <img src="https://placehold.co/200x200/FFFFFF/000?text=CARRITO+FRESCO" alt="Carrito de compras con alimentos frescos" class="h-48 w-48 object-contain">
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8 pb-2 border-b-2 border-camucha-accent/50">⭐ Lo Más Vendido</h2>
+            <div id="featuredProducts" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                </div>
+        </section>
+
+        <section id="ofertas" class="mt-12 bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+            <h2 class="text-3xl font-extrabold text-red-600 mb-6 border-b border-red-200 pb-2">🔥 ¡Ofertas y Combos!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-red-50 rounded-xl shadow-inner border-l-4 border-red-500">
+                    <h3 class="text-xl font-bold text-red-700 mb-2">Combo Parrillero (S/ 45.00)</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Carbón, chorizo, mayonesa y 4 cervezas personales. ¡Listo para la reunión!</p>
+                    <button onclick="showAlert('Combo Parrillero añadido al carrito!')" class="w-full btn-primary text-sm">
+                        ¡Comprar Combo!
+                    </button>
+                </div>
+                <div class="p-6 bg-yellow-50 rounded-xl shadow-inner border-l-4 border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-700 mb-2">Acumula Puntos Camucha</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Por cada S/ 10.00 en compras, ganas 1 punto. ¡Canjea tus puntos por descuentos!</p>
+                    <button onclick="showAlert('Regístrate para empezar a acumular puntos')" class="w-full btn-primary text-sm">
+                        Mi Cuenta
+                    </button>
+                </div>
+                <div class="p-6 bg-green-50 rounded-xl shadow-inner border-l-4 border-camucha-accent">
+                    <h3 class="text-xl font-bold text-camucha-accent mb-2">Jueves de Ahorro</h3>
+                    <p class="font-light mb-4 text-sm text-gray-600">20% de descuento en toda la línea de lácteos. ¡Válido solo hoy!</p>
+                    <button onclick="filterCategory('lacteos', this)" class="w-full btn-primary text-sm">
+                        Ver Lácteos
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="catalogo" class="mt-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8 pb-2 border-b-2 border-camucha-accent/50">🛒 Catálogo Completo</h2>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+                <button onclick="filterCategory('all', this)" class="category-btn bg-camucha-accent text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition duration-150">Todas</button>
+                <button onclick="filterCategory('abarrotes', this)" class="category-btn bg-gray-200 hover:bg-camucha-accent hover:text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition duration-150">Abarrotes</button>
+                <button onclick="filterCategory('bebidas', this)" class="category-btn bg-gray-200 hover:bg-camucha-accent hover:text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition duration-150">Bebidas</button>
+                <button onclick="filterCategory('limpieza', this)" class="category-btn bg-gray-200 hover:bg-camucha-accent hover:text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition duration-150">Limpieza</button>
+                <button onclick="filterCategory('lacteos', this)" class="category-btn bg-gray-200 hover:bg-camucha-accent hover:text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition duration-150">Lácteos</button>
+                <button onclick="filterCategory('snacks', this)" class="category-btn bg-gray-200 hover:bg-camucha-accent hover:text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition duration-150">Snacks</button>
+            </div>
+
+            <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                </div>
+        </section>
+
+    </main>
+
+    <footer id="info" class="mt-16 bg-gray-900 text-white pt-10 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <div>
+                <img src="./logo.camucha.png" alt="Logo Camucha Footer" class="h-8 mb-4">
+
+                <h3 class="text-2xl font-extrabold mb-4 flex items-center">
+                    <i data-lucide="shopping-basket" class="w-6 h-6 mr-2 text-camucha-accent"></i> Minimarket Camucha
+                </h3>
+                <p class="text-gray-400 text-sm">Tu minimarket de barrio, ahora en línea. ¡Fresco, rápido y a tu puerta!</p>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-camucha-accent">Contáctanos</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><i data-lucide="map-pin" class="w-4 h-4 inline mr-2"></i> Dirección: Av. Los Girasoles 123, Lima.</li>
+                    <li><i data-lucide="phone" class="w-4 h-4 inline mr-2"></i> Teléfono: (01) 456-7890</li>
+                    <li><i data-lucide="whatsapp" class="w-4 h-4 inline mr-2"></i> WhatsApp: 987 654 321</li>
+                    <li><i data-lucide="briefcase" class="w-4 h-4 inline mr-2"></i> RUC: 20567890123</li>
+                    <li><i data-lucide="clock" class="w-4 h-4 inline mr-2"></i> Horario: Lun - Dom, 8:00 AM - 10:00 PM</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-camucha-accent">Servicio de Delivery</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><i data-lucide="check-circle" class="w-4 h-4 inline mr-2 text-green-400"></i> Zonas: Todo el distrito X (consultar).</li>
+                    <li><i data-lucide="truck" class="w-4 h-4 inline mr-2"></i> Tarifa Estándar: S/ 5.00.</li>
+                    <li><i data-lucide="clock-history" class="w-4 h-4 inline mr-2"></i> Tiempo Estimado: 30 - 60 minutos.</li>
+                    <li><i data-lucide="calendar" class="w-4 h-4 inline mr-2"></i> Reparto: Hasta las 9:30 PM.</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-camucha-accent">Pagos y Seguridad</h4>
+                <div class="space-y-3 text-sm">
+                    <p class="text-gray-300 font-semibold">Aceptamos:</p>
+                    <div class="flex flex-wrap gap-3 text-3xl">
+                        <span title="Yape/Plin" class="bg-white p-1 rounded-md text-gray-800">📱</span>
+                        <span title="Visa/Mastercard" class="bg-white p-1 rounded-md text-gray-800">💳</span>
+                        <span title="Efectivo contra entrega" class="bg-white p-1 rounded-md text-gray-800">💵</span>
+                    </div>
+                    <p class="text-gray-400 mt-4 text-xs">
+                        <i data-lucide="lock" class="w-4 h-4 inline mr-1 text-camucha-accent"></i> Sitio Seguro (HTTPS/SSL).
+                    </p>
+                    <a href="#" class="text-gray-500 hover:text-white transition text-xs block">Política de Privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition text-xs block">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-700 mt-6 pt-4 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2025 Minimarket Camucha. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-content p-6 flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b">
+                <h2 class="text-2xl font-bold text-camucha-accent">🛒 Tu Carrito de Compras</h2>
+                <button id="closeCartBtn" class="p-2 rounded-full hover:bg-gray-100" aria-label="Cerrar">
+                    <i data-lucide="x" class="w-6 h-6 text-gray-600"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="flex-grow py-4 space-y-4 overflow-y-auto">
+                </div>
+
+            <div class="pt-4 border-t">
+                <div class="flex justify-between items-center text-xl font-bold mb-4">
+                    <span>Total a Pagar:</span>
+                    <span id="cartTotal">S/ 0.00</span>
+                </div>
+                <button onclick="checkout()" class="w-full btn-primary shadow-lg">
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toastMessage" class="fixed bottom-5 right-5 p-4 rounded-xl bg-gray-900 text-white shadow-xl transform translate-x-full transition-transform duration-300 z-50">
+        Mensaje
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

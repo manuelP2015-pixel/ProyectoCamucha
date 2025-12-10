@@ -1,0 +1,99 @@
+/* Estilos personalizados: Verde vibrante y fondo claro */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0fdf4; /* Verde muy claro, casi blanco */
+}
+/* Color principal: El verde del logo (aprox. #4CAF50, ajustado a Tailwind green-600) */
+.text-camucha-accent { color: #16A34A; } 
+.bg-camucha-accent { background-color: #16A34A; }
+.hover\:bg-camucha-dark:hover { background-color: #15803D; } 
+
+/* Encabezado y navegación */
+.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.btn-primary {
+    /* Estilo base de los botones principales */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    border-radius: 0.75rem; /* rounded-xl */
+    font-weight: 700; /* font-bold */
+    transition: all 0.3s ease; /* transition duration-300 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    
+    /* === CAMBIOS AQUÍ: Color de fondo Azul Claro, Color de texto Oscuro === */
+    background-color: #00A3FF; /* Azul claro vibrante para botones de acción */
+    color: #1a1a1a; /* Texto negro/gris oscuro para contraste */
+    /* ==================== */
+}
+.btn-primary:hover {
+    background-color: #007ACC; /* Tono de azul más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+}
+.card-product {
+    /* Estilo de las tarjetas de producto, limpio y profesional */
+    background-color: white; /* bg-white */
+    padding: 1rem; /* p-4 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* shadow-md */
+    transition: all 0.3s ease; /* transition duration-300 */
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    justify-content: space-between; /* justify-between */
+    border: 1px solid #f3f4f6; /* border border-gray-100 */
+    min-height: 350px;
+}   
+.card-product:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* hover:shadow-xl */
+}
+/* Estilos del Modal del Carrito */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+}
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 1.5rem; /* Más redondeado */
+    transform: scale(0.95);
+    transition: transform 0.3s ease-out;
+}
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+.modal-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Estilo para la barra de búsqueda */
+.search-bar-style {
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    padding-left: 2.5rem; /* pl-10 */
+    padding-right: 1rem; /* pr-4 */
+    border-radius: 9999px; /* rounded-full */
+    border: 1px solid #d1d5db; /* border border-gray-300 */
+    transition: all 0.15s ease; /* transition */
+    width: 100%; /* w-full */
+    background-color: #FFFFFF;
+}
+.search-bar-style:focus {
+    outline: none;
+    border-color: #16A34A; /* focus:border-camucha-accent */
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.3); /* focus:ring-camucha-accent */
+}
